@@ -4,11 +4,15 @@ import random
 import json
 
 app = Flask(__name__)
-redis_client = redis.Redis(host='redis', port=6379, db=0)  # Ajusta según tu configuración
+redis_client = redis.Redis(host='redis', port=6379, db=0)
 
 @app.route('/health', methods=['GET'])
 def health_check():
-    status = random.choice(['up', 'down'])
+    if random.randint(1, 100) <= 10:
+        status = 'down'
+    else:
+        status = 'up'
+    
     message = json.dumps({'service': 'plan_deportivo', 'status': status})
     redis_client.publish('health_checks', message)
     return "Health status updated"
