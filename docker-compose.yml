@@ -9,6 +9,11 @@ services:
     build: ./plan_deportivo
     ports:
       - "5000:5000"
+
+  deportistas:
+    build: ./deportistas
+    ports:
+      - "5002:5002"
   
   monitor_service:
     build: ./monitor_service

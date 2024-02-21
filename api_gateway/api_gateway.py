@@ -3,14 +3,15 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/<service>/<action>', methods=['GET', 'POST'])
-def gateway(service, action):
+@app.route('/<service>/<action>/<port>', methods=['GET', 'POST'])
+def gateway(service, action, port=5000):
     if request.method == 'POST':
         data = request.json
-        response = requests.post(f'http://{service}:5000/{action}', json=data)
+        response = requests.post(f'http://{service}:{port}/{action}',
+                                 json=data)
         return response.content
     else:
-        response = requests.get(f'http://{service}:5000/{action}')
+        response = requests.get(f'http://{service}:{port}/{action}')
         return response.content
 
 if __name__ == '__main__':
