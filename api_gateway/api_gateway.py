@@ -7,11 +7,11 @@ app = Flask(__name__)
 def gateway(service, action):
     if request.method == 'POST':
         data = request.json
-        response = requests.post(f'http://{service}-service:5000/{action}', json=data)
-        return jsonify(response.json())
+        response = requests.post(f'http://{service}:5000/{action}', json=data)
+        return response.content
     else:
-        response = requests.get(f'http://{service}-service:5000/{action}')
-        return jsonify(response.json())
+        response = requests.get(f'http://{service}:5000/{action}')
+        return response.content
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)

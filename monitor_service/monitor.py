@@ -18,7 +18,7 @@ def handle_message(message):
     c.execute("INSERT INTO service_status (service_name, status) VALUES (?, ?)", (service_name, status))
     conn.commit()
     
-    print(f"Monitored {service_name}, status: {status}")
+    
 
 def listen_for_health_checks():
     pubsub = redis_client.pubsub()
