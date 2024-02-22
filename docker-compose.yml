@@ -15,7 +15,7 @@ services:
     ports:
       - "5002:5002"
 
-  servicios:
+  membresia:
     build: ./membresia
     ports:
       - "5004:5004"
