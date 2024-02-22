@@ -15,6 +15,11 @@ services:
     ports:
       - "5002:5002"
   
+  servicios:
+    build: ./servicios
+    ports:
+      - "5003:5003"
+
   monitor_service:
     build: ./monitor_service
     volumes:
