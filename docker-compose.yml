@@ -14,6 +14,11 @@ services:
     build: ./deportistas
     ports:
       - "5002:5002"
+
+  servicios:
+    build: ./membresia
+    ports:
+      - "5004:5004"
   
   monitor_service:
     build: ./monitor_service
